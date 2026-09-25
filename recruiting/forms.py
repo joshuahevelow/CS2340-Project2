@@ -11,14 +11,12 @@ class Signup(UserCreationForm):
 class JobSeek(forms.ModelForm):
     class Meta:
         model = JobSeeker
-        fields = ["headline", "skills", "education", "experience","links"
-                  ]
+        fields = ["headline", "skills", "education", "experience","links"]
 class JobSeekForm(forms.Form):
     title = forms.ChoiceField(required=False)
     skills = forms.ChoiceField(required=False)
     location = forms.ChoiceField(required=False)
-    salary = forms.ChoiceField(required=False)
     is_remote = forms.ChoiceField(required=False, choices=[("", ""), ("remote", "remote"), ("on-site", "on-site")])
-    is_visa = forms.ChoiceField(required= False, choices=[("", ""), ("may offer sponsorship","may offer sponsorship"), ("does not offer sponsorship", "does not offer sponsorship")])
+    is_visa = forms.ChoiceField(required= False, choices=[("", ""), ("yes we offer sponsorship","may offer sponsorship"), ("does not offer sponsorship", "does not offer sponsorship")])
     min_salary = forms.IntegerField(required=False)
     max_salary = forms.IntegerField(required=False)

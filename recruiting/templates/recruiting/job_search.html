@@ -12,6 +12,13 @@
     </form>
     {% for job in jobs %}
         <p> {{ job.title}} </p>
+        {% if user.is_authenticated and user.role == "seeker" %}
+        <form method="post" action="{% url 'apply_to_job' job.id %}">
+            {% csrf_token %}
+            <textarea name="note" placeholder="Optional note"></textarea>
+            <button type="submit">Apply</button>
+        </form>
+        {% endif %}
     {% endfor %}
 </body>
 </html>

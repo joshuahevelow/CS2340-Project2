@@ -1,0 +1,11 @@
+{% block content %}
+<h1>My Applications</h1>
+{% for app in apps %}
+    <div>
+        <strong>{{ app.job.title }}</strong> - {{ app.get_status_display }}
+        <br><small> Applied {{ app.applied_at|date:"M d, Y" }}</small>
+    </div>
+{% empty %}
+    <p>No applications yet.</p>
+{% endfor %}
+{% endblock %}

@@ -38,3 +38,19 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+class Application(models.Model):
+    STATUS_CHOICES = [
+        ("applied", "Applied"), ("review", "Review"), ("interview", "Interview"), ("offer", "Offer"), ("closed", "Closed"),
+    ]
+    job = models.ForeignKey(Job, on_delete = models.CASCADE)
+    seeker = models.ForeignKey(JobSeeker, on_delete = models.CASCADE)
+    note = models.TextField(blank=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="applied")
+    applied_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("job", "seeker")
+
+    def __str__(self):
+        return f"{self.seeker} -> {self.job} ({self.status})"
