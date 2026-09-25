@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>{{title}}</h1>
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-5 mx-auto">
+  <div class="card job-card p-4">
+    <h3 class="mb-3">{{ title }}</h3>
     <form method="post">
-        {%csrf_token%}
-        {{ form.as_p}}
-        <button type = "submit"> </button>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-dark w-100" type="submit">Submit</button>
     </form>
-    <a href="{% url 'job_search' %"></a>
-</body>
-</html>
+  </div>
+</div>
+{% endblock %}
