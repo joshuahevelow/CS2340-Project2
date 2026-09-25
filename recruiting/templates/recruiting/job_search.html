@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> Look for Jobs</h1>
+    <form method="get">
+        {{form.as_p }}
+        <button type="submit"></button>
+    </form>
+    {% for job in jobs %}
+        <p> {{ job.title}} </p>
+    {% endfor %}
+</body>
+</html>

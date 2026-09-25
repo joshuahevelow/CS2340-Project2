@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth import views as authorized_view
+from recruiting import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("signup/", views.signup, name="jobs"),
+    path("profile/edit/", views.edit, name="edit_profile"),
+    path("seekers/<int:seekers_id>", views.view, name="view_profile"),
+    path("", views.job_search, name="job_search"),
 ]
