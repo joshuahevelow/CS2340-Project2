@@ -1,0 +1,22 @@
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from .models import JobSeeker, User
+
+class Signup(UserCreationForm):
+    job = forms.ChoiceField(choices= User.ROLE_CHOICES)
+    class Meta:
+        model = User
+        fields = ["username", "role", "password1", "password2"]
+
+class JobSeek(forms.ModelForm):
+    class Meta:
+        model = JobSeeker
+        fields = ["headline", "skills", "education", "experience","links"
+                  ]
+class JobSearchForm(forms.Form):
+    title = forms.ChoiceField(required=False)
+    skills = forms.ChoiceField(required=False)
+    location = forms.ChoiceField(required=False)
+    salary = forms.ChoiceField(required=False)
+    is_remote = forms.ChoiceField(required=False, choices=[("", "remote or on-site", "remote", "on-site")])
+    is_visa = forms.ChoiceField(required= False, choices=[("", "yes sponsorship", "may offer sponsorship", "does not offer sponsorship")])
